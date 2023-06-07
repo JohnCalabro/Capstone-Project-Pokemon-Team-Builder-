@@ -1,0 +1,43 @@
+
+1. The overall goal of this application is to build a Pokemon team. Each user can submit a team which will be displayed on the screen with sprites and 
+Pokemon names. The point of this application is to compare a user’s team to pre-seeded Pokemon champion teams from the Pokemon games. 
+Anyone familiar with video games can think of these champions as the “bosses” in the games, each champion in the games has a team of their own Pokemon, 
+these champion teams are never randomized meaning during each play through their teams always consist of the same Pokemon. 
+This app is for a user to prepare in-game teams that match up well against these “bosses” by displaying their team on the UI next to Champion  
+teams which will displayed nearby on the UI. 
+2. Any User familiar with the Pokemon games will benefit most from this app. Having this knowledge is crucial for the user because to build their team 
+they must be familiar with the names of different individual Pokemon, because the app requires the User to type a Pokemon’s name into a form, in order to 
+preview the Pokemon they want, before submitting that Pokemon to their team. This app might also benefit any sort of gamer who enjoys RPGs who has never 
+played Pokemon and is interested in getting into the single-player Pokemon game experience. 
+3. As far as data I have already chosen to use an free-to-use API known as https://pokeapi.co/ 
+this API has all the information one needs about an individual Pokemon, including the Pokemon’s name, and their sprites (images) from the games, 
+down to their move sets and their types. For example the dragon-like Pokemon “Charizard” knows a “move” or an “attack” known as “Flamethrower” and 
+Charizard’s type(s) (Pokemon can have up to two types at once) are both “Flying” and “Fire” type, which makes sense since Charizard resembles a 
+fire-breathing dragon. This information is perfect for what I want to display on the DOM for this project. 
+4. 
+    1. As far as my DB schema we have a Home route which will display a random Pokemon image each time the page is refreshed, as well as provide links 
+    to forms which allow Users to sign in and then sign out. A User must be logged in to actually build a team so this requires a sign up. Once signed in,
+    we get brought to the main “Build” page, where you enter a Pokemon’s name to a form their sprite shows up on the screen with the name,
+    perhaps you can click on each Pokemon to get further details, but the build page will at least display the Pokemon’s name near their sprite. 
+    Because in game teams are limited to 6 Pokemon only 6 divs displaying each Pokemon sprite and its name will be allowed on the “build” page. 
+    Once all six divs are filled with rendered mons (achieved through JS axios) their data will be sent through another button (nested in a form filled with 
+    6 hidden inputs) and be sent in a POST request to fill a UserTeam table in my DB created from a models.py file. Other routes might display further details 
+    about a Pokemon such as its description or some sort of detail page, there will also be a route that will display your team as a logged in User next to 
+    the list of Champions each time you click a champion their teams will display so you can compare your team to the champion’s team. 
+    My DB will have pre-seeded teams from every champion from the mainline Pokemon games.
+    2. The API is free and easy to use, the only slight difficulty I would run into is finding nested data in this particular 
+    API which at first glance has some pretty nasty looking json (a lot of nesting), however once I played around on Insomnia the data was very easy 
+    to navigate and I could access each piece of data easily.
+    3. In terms of sensitive info, I want a User’s password to be secure so I will use “bcrypt” in order to obfuscate their password in the DB so that it’s 
+    very difficult for a User’s account to be hacked. 
+    4. In part one of this question, I went over much of this app's functionality so in a short reca : You can preview your team by typing the name of the 
+    Pokemon you want into a form. Since I’m getting data from an API any Pokemon that exists in the games should show up when its name is typed in the form. 
+    Once the team is previewed you submit it by hitting another button and it’s saved on the DB and in session so your team persists and can then be compared 
+    to pre-seeded champion teams on the front-end. 
+    5. As far as User flow, you login, build a team by typing the Pokemon name into the form and then add that mon to the page to preview your team then 
+    submit the team which will be saved to a User, (note this app will only require a user to submit one Pokemon for it to qualify as a team) then the
+    User can compare their team to a champion’s team of their choice from the games. The comparison however is up to the User, there will be no additional 
+    functionality that 
+    calculates water beating fire, or rock beating bug, the User must use their own knowledge to make the comparisons as well as use the API data I display 
+    to analyze a Pokemon’s types, perhaps even moves. 
+    6. In terms of stretch goals, I will be honest and say I cannot think of any at this moment. This app will make use of everything in CRUD. 
